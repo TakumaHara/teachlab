@@ -13,8 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <form action="{{ route('store') }}" method="POST">
+                        @csrf
+                    <div class="form-group">
+                        <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">保存</button>
+                    </form>
+                    <div>
+                        @foreach($articles as $article)
+                        <p>{{$article['content']}}</p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
