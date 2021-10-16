@@ -15,6 +15,8 @@
                         <button type="submit" class="mt-3 btn btn-primary">更新</button>
                     </form>
                     <form action="{{route('destroy')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="article_id" value="{{$edit_article[0]['id']}}"/>
                         <button type="submit" class="mt-3 btn btn-primary">削除</button>
                     </form>
                 </div>
