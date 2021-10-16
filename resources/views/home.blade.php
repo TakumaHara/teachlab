@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('記事一覧') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -22,7 +22,7 @@
                     </form>
                     <div>
                         @foreach($articles as $article)
-                        <p>{{$article['content']}}</p>
+                        <a class="d-block" href="/edit/{{$article['id']}}">{{$article['content']}}</a>
                         @endforeach
                     </div>
                 </div>

@@ -33,4 +33,23 @@ class HomeController extends Controller
         Article::insert(['content'=> $posts['content'], 'user_id'=> \Auth::id()]);
         return redirect(route('home'));
     }
+    public function edit($id)
+    {
+        $edit_article=Article::where('articles.user_id', '=', \Auth::id())
+        ->where('articles.id', '=', $id)
+        ->whereNull('articles.deleted_at')
+        ->get();
+
+        return view('edit', compact('edit_article'));
+    }
+    public function update(Request $request)
+    {
+        $posts = $request->all();
+        Article::where('id', $posts['article_id'])->update(['content' => $posts['content'], 'user_id'=>\Auth::id()]);
+        return redirect(route('home'));
+    }
+    public function destroy(Request $request)
+    {
+        return redirect(route('home'));
+    }
 }
